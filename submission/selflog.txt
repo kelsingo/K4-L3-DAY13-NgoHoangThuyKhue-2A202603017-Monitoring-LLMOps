@@ -1,0 +1,48 @@
+CP0: baseline 
+python scripts/load_test.py
+python scripts/validate_logs.py
+python scripts/validate_dashboard.py
+python -m pytest -q
+[200] MISSING | qa | 2029.5ms
+[200] MISSING | qa | 398.9ms
+[200] MISSING | summary | 401.5ms
+[200] MISSING | qa | 405.9ms
+[200] MISSING | qa | 401.6ms
+[200] MISSING | summary | 542.2ms
+[200] MISSING | qa | 900.5ms
+[200] MISSING | qa | 410.9ms
+[200] MISSING | qa | 411.1ms
+[200] MISSING | qa | 475.8ms
+--- Lab Verification Results ---
+Total log records analyzed: 21
+Records with missing required fields: 20
+Records with missing enrichment (context): 20
+Unique correlation IDs found: 0
+Potential PII leaks detected: 0
+
+--- Grading Scorecard (Estimates) ---
+- [FAILED] Missing required fields (ts, level, etc.)
+- [FAILED] Correlation ID propagation (less than 2 unique IDs)
+- [FAILED] Log enrichment (missing user_id_hash, etc.)
++ [PASSED] PII scrubbing
+
+Estimated Score: 30/100
+HỢP LỆ: 6/6 panel có trong dashboard contract.
+......................                                                                     [100%]
+22 passed in 0.81s
+(.venv) (base) mal@Khues-MacBook-Pro K4-L3-DAY13-NgoHoangThuyKhue-2A202603017-Monitoring-LLMOps % 
+python scripts/validate_logs.py
+--- Lab Verification Results ---
+Total log records analyzed: 21
+Records with missing required fields: 20
+Records with missing enrichment (context): 20
+Unique correlation IDs found: 0
+Potential PII leaks detected: 0
+
+--- Grading Scorecard (Estimates) ---
+- [FAILED] Missing required fields (ts, level, etc.)
+- [FAILED] Correlation ID propagation (less than 2 unique IDs)
+- [FAILED] Log enrichment (missing user_id_hash, etc.)
++ [PASSED] PII scrubbing
+
+Estimated Score: 30/100

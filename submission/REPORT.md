@@ -4,13 +4,13 @@
 
 ## 1. Thông tin học viên
 
-- **Họ và tên:**
-- **MSSV:**
+- **Họ và tên:** Ngô Hoàng Thụy Khuê
+- **MSSV:** 2A202603017
 - **Lớp:** K4-L3B
-- **Repository URL:**
-- **Commit SHA cuối:**
-- **Challenge ID:**
-- **Tên project Langfuse cá nhân:** `day13-k4-l3b-<MSSV>`
+- **Repository URL:** 
+- **Commit SHA cuối:** 
+- **Challenge ID:** 
+- **Tên project Langfuse cá nhân:** `day13-k4-l3b-2A202603017>`
 
 ## 2. Evidence index
 
@@ -37,11 +37,11 @@
 
 | Nội dung | Baseline | Kết quả cuối | Nhận xét |
 |---|---|---|---|
-| `validate_logs.py` | | | |
-| `validate_dashboard.py` | | | |
-| `pytest` | | | |
+| `validate_logs.py` | 30/100 | | |
+| `validate_dashboard.py` | 6/6 | | |
+| `pytest` | 22 | | |
 | Số traces hợp lệ | | | |
-| Số PII leak | | | |
+| Số PII leak | 0 | | |
 | Latency P95 / TTFT P95 | | | |
 | Retrieval success rate | | | |
 

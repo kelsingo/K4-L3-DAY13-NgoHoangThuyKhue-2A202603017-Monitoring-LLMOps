@@ -7,8 +7,8 @@
 * **Họ và tên:** Ngô Hoàng Thụy Khuê
 * **MSSV:** 2A202603017
 * **Lớp:** K4-L3B
-* **Repository URL:** `[điền URL repository]`
-* **Commit SHA cuối:** `[điền commit SHA cuối]`
+* **Repository URL:** `https://github.com/kelsingo/K4-L3-DAY13-NgoHoangThuyKhue-2A202603017-Monitoring-LLMOps.git`
+* **Commit SHA cuối:** `099f23453e58189e6725345d20be6cd57ace8c5e`
 * **Challenge ID:** `day13-k4-l3b-monitoring-llmops-v1`
 * **Tên project Langfuse cá nhân:** `day13-k4-l3b-2A202603017`
 
@@ -35,13 +35,13 @@
 
 | Nội dung                |                                 Baseline |               Kết quả cuối | Nhận xét                                                                                                                                                                                                            |
 | ----------------------- | ---------------------------------------: | -------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `validate_logs.py`      |                                   30/100 |       `[điền output cuối]` | Baseline validator cho thấy missing required fields, correlation IDs và enrichment; PII scrubbing passed.                                                                                                           |
-| `validate_dashboard.py` |                                      6/6 |       `[điền output cuối]` | Dashboard yêu cầu đủ 6 panel.                                                                                                                                                                                       |
-| `pytest`                |                                22 passed |       `[điền output cuối]` | Kết quả cuối cần lấy từ lần chạy pytest cuối cùng.                                                                                                                                                                  |
-| Số traces hợp lệ        |                                     1/21 |       `[điền output cuối]` | Baseline có 20/21 records missing required fields.                                                                                                                                                                  |
-| Số PII leak             |                                        0 |       `[điền output cuối]` | Các log được cung cấp cho thấy email, phone và credit card đã được thay bằng `[REDACTED_*]`.                                                                                                                        |
-| Latency P95 / TTFT P95  |                      **165.25 ms / TBD** | `[điền từ challenge logs]` | Với 10 latency values do `load_test.py` in ra: P95 ≈ 165.25 ms. Tuy nhiên challenge phải dùng `latency_ms` trong `logs.jsonl`, không dùng thời gian client-side của `load_test.py`. TTFT P95 cần tính từ `ttft_ms`. |
-| Retrieval success rate  | **100% trong các records được cung cấp** | `[điền từ challenge logs]` | Tất cả response records được cung cấp đều có `tool_name="retrieval"` và `tool_success=true`; challenge-specific rate cần tính từ các records trong khoảng incident.                                                 |
+| `validate_logs.py`      |                                   30/100 |       100/100 | Baseline validator cho thấy missing required fields, correlation IDs và enrichment; PII scrubbing passed.                                                                                                           |
+| `validate_dashboard.py` |                                      6/6 |       6/6 | Dashboard yêu cầu đủ 6 panel.                                                                                                                                                                                       |
+| `pytest`                |                                22 passed |       22 passed | Kết quả cuối cần lấy từ lần chạy pytest cuối cùng.                                                                                                                                                                  |
+| Số traces hợp lệ        |                                     1/21 |       21/21 | Baseline có 20/21 records missing required fields.                                                                                                                                                                  |
+| Số PII leak             |                                        0 |       0 | Các log được cung cấp cho thấy email, phone và credit card đã được thay bằng `[REDACTED_*]`.                                                                                                                        |
+| Latency P95 / TTFT P95  |                      **165.25 ms / TBD** | 753.70 ms/54.65 ms | Với 10 latency values do `load_test.py` in ra: P95 ≈ 165.25 ms. Tuy nhiên challenge phải dùng `latency_ms` trong `logs.jsonl`, không dùng thời gian client-side của `load_test.py`. TTFT P95 cần tính từ `ttft_ms`. |
+| Retrieval success rate  | 100%  | 100% | Tất cả response records được cung cấp đều có `tool_name="retrieval"` và `tool_success=true`; challenge-specific rate cần tính từ các records trong khoảng incident.                                                 |
 
 ## 4. Logging và PII
 
@@ -68,13 +68,13 @@
 * **Cách nối trace với log:**
   Sử dụng `correlation_id` làm khóa liên kết. Từ log có request bất thường, lấy `correlation_id`, sau đó tìm trace có cùng correlation ID và đối chiếu các span/observation.
 
-* **Prompt name:** `[điền prompt name từ Langfuse]`
+* **Prompt name:** `day13-chat`
 
-* **Version/label baseline:** `[điền baseline version/label]`
+* **Version/label baseline:** `1`
 
-* **Version/label candidate:** `[điền candidate version/label]`
+* **Version/label candidate:** `2`
 
-* **Trace ID của mỗi version:** `[điền trace ID từ Langfuse]`
+* **Trace ID của mỗi version:** `828503dd294c3115`, `31a89589b334585c`
 
 * **Cách promote và rollback `production`:**
   Sử dụng prompt version/label để kiểm soát phiên bản production. Khi candidate được xác nhận, label `production` được chuyển sang version mới. Nếu version mới gây regression, rollback bằng cách chuyển label `production` về version baseline trước đó.

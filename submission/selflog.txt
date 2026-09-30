@@ -46,3 +46,32 @@ Potential PII leaks detected: 0
 + [PASSED] PII scrubbing
 
 Estimated Score: 30/100
+
+
+python scripts/load_test.py
+[200] req-d803e900 | qa | 1077.1ms
+[200] req-95cd5690 | qa | 472.3ms
+[200] req-fad4b174 | summary | 454.5ms
+[200] req-88bdaacc | qa | 466.9ms
+[200] req-b1e599a3 | qa | 455.7ms
+[200] req-d48d95f0 | summary | 453.2ms
+[200] req-7ff6c8b6 | qa | 459.9ms
+[200] req-7e9d723c | qa | 462.5ms
+[200] req-1e28c6e4 | qa | 478.1ms
+[200] req-605b86f0 | qa | 463.6ms
+
+python scripts/validate_logs.py
+--- Lab Verification Results ---
+Total log records analyzed: 44
+Records with missing required fields: 0
+Records with missing enrichment (context): 0
+Unique correlation IDs found: 20
+Potential PII leaks detected: 0
+
+--- Grading Scorecard (Estimates) ---
++ [PASSED] Basic JSON schema
++ [PASSED] Correlation ID propagation
++ [PASSED] Log enrichment
++ [PASSED] PII scrubbing
+
+Estimated Score: 100/100
